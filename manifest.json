@@ -6,7 +6,7 @@
     "browser_action": {
       "default_icon": "icon48.png"
     },
-    "permissions": ["tabs", "<all_urls>"],
+    "permissions": ["<all_urls>"],
     "background": {
       "scripts": ["background.js"],
       "persistent": true
