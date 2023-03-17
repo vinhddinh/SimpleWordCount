@@ -1,20 +1,19 @@
 {
-    "manifest_version": 2,
-    "name": "Simple Word Count",
-    "version": "1.0",
-    "description": "Counts the number of words in the selected text and displays it in a badge.",
-    "browser_action": {
-      "default_icon": "icon48.png"
-    },
-    "permissions": ["<all_urls>"],
-    "background": {
-      "scripts": ["background.js"],
-      "persistent": false
-    },
-    "icons": {
-      "16": "icon16.png",
-      "48": "icon48.png",
-      "128": "icon128.png"
-    }
+  "manifest_version": 3,
+  "name": "Simple Word Count",
+  "version": "1.0",
+  "description": "Counts the number of words in the selected text and displays it in a badge.",
+  "action": {
+    "default_icon": "icon48.png"
+  },
+  "permissions": ["scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
   }
-  
+}

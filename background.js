@@ -1,20 +1,24 @@
 function updateWordCount(tabId) {
-  chrome.tabs.executeScript(
+  chrome.scripting.executeScript(
     {
-      code: "window.getSelection().toString();",
+      target: { tabId: tabId },
+      function: function () {
+        const selection = window.getSelection().toString();
+        return selection;
+      },
     },
-    (selection) => {
+    (result) => {
       if (chrome.runtime.lastError) {
         console.error(chrome.runtime.lastError.message);
         return;
       }
 
-      const wordCount = countWords(selection[0]);
-      chrome.browserAction.setBadgeText({
+      const wordCount = countWords(result[0].result);
+      chrome.action.setBadgeText({
         text: wordCount.toString(),
         tabId: tabId,
       });
-      chrome.browserAction.setBadgeBackgroundColor({
+      chrome.action.setBadgeBackgroundColor({
         color: "#E0E0E0",
         tabId: tabId,
       });
